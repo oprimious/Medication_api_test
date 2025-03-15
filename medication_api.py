@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import pandas as pd
+from flask_cors import CORS 
 
 # Load the dataset
 csv_file = "medication_lookup_data.csv"  # Update with correct path if needed
@@ -7,6 +8,7 @@ medication_data = pd.read_csv(csv_file)
 
 # Initialize Flask app
 app = Flask(__name__)
+CORS(app) 
 
 @app.route('/search', methods=['GET'])
 def search_medication():
